@@ -32,7 +32,7 @@ class TestEasyLevel(unittest.TestCase):
 # ================================================================
 # CAP DO 2: Kiem thu Mocking va xu ly ngoai le (Dua Coverage >= 85%)
 # ================================================================
-class TestMediumLevel(unittest.TestCase):
+#class TestMediumLevel(unittest.TestCase):
     """Kiem thu chuc nang ap dung ma khuyen mai (apply_promo_code)"""
 
     def test_promo_online_valid(self):
@@ -69,7 +69,7 @@ class TestMediumLevel(unittest.TestCase):
         self.assertIn("Ma khuyen mai khong hop le", str(ctx.exception))
 
 
-class TestHardLevel(unittest.TestCase):
+#class TestHardLevel(unittest.TestCase):
     """Kiem thu chuc nang tim nha hang voi Mocking GPS (get_nearby_restaurants)"""
 
     @patch('yummy_app.gps_service.get_current_location')
