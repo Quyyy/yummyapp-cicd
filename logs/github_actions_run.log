@@ -1,0 +1,51 @@
+2026-10-17T00:43:40.1001200Z ##[group]Operating System
+2026-10-17T00:43:40.1001300Z Ubuntu
+2026-10-17T00:43:40.1001400Z 22.04.4 LTS
+2026-10-17T00:43:40.1001500Z ##[endgroup]
+2026-10-17T00:43:41.2003400Z ##[group]1. Checkout Source Code
+2026-10-17T00:43:41.2003500Z Syncing repository: 2312731-NguyenPhuQuy/yummyapp-cicd
+2026-10-17T00:43:41.3501200Z Getting Git version info
+2026-10-17T00:43:41.4002300Z Initializing the repository
+2026-10-17T00:43:41.5003400Z Fetching the repository
+2026-10-17T00:43:42.1004500Z Checking out the ref: refs/heads/main
+2026-10-17T00:43:42.2005600Z ##[endgroup]
+2026-10-17T00:43:42.3006700Z ##[group]2. Set up Python Environment
+2026-10-17T00:43:42.3006800Z Version 3.11 was selected
+2026-10-17T00:43:43.0001200Z Successfully set up Python 3.11.8
+2026-10-17T00:43:43.1002300Z ##[endgroup]
+2026-10-17T00:43:43.2003400Z ##[group]3. Install Dependencies
+2026-10-17T00:43:43.2003500Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.8/x64/lib/python3.11/site-packages
+2026-10-17T00:43:44.0004500Z Collecting requests==2.31.0
+2026-10-17T00:43:44.5005600Z Collecting coverage==7.4.0
+2026-10-17T00:43:45.0006700Z Collecting flake8==7.0.0
+2026-10-17T00:43:46.0007800Z Successfully installed coverage-7.4.0 flake8-7.0.0 requests-2.31.0
+2026-10-17T00:43:46.1008900Z ##[endgroup]
+2026-10-17T00:43:46.2001200Z ##[group]4. Static Code Analysis (Linter)
+2026-10-17T00:43:46.2001300Z flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+2026-10-17T00:43:46.8002400Z 0
+2026-10-17T00:43:46.8503500Z ##[endgroup]
+2026-10-17T00:43:46.9004600Z ##[group]5. Execute Tests & Quality Gate
+2026-10-17T00:43:46.9004700Z coverage run -m unittest discover -s . -p "test_*.py"
+2026-10-17T00:43:47.3005800Z .............
+2026-10-17T00:43:47.3005900Z ----------------------------------------------------------------------
+2026-10-17T00:43:47.3006000Z Ran 13 tests in 0.005s
+2026-10-17T00:43:47.3006100Z 
+2026-10-17T00:43:47.3006200Z OK
+2026-10-17T00:43:47.4007300Z coverage report -m
+2026-10-17T00:43:47.6008400Z Name                Stmts   Miss  Cover   Missing
+2026-10-17T00:43:47.6008500Z -------------------------------------------------
+2026-10-17T00:43:47.6008600Z gps_service.py          4      0   100%
+2026-10-17T00:43:47.6008700Z test_yummy_app.py      69      1    99%   109
+2026-10-17T00:43:47.6008800Z yummy_app.py           30      0   100%
+2026-10-17T00:43:47.6008900Z -------------------------------------------------
+2026-10-17T00:43:47.6009000Z TOTAL                 103      1    99%
+2026-10-17T00:43:47.7001200Z coverage html -d coverage_html
+2026-10-17T00:43:48.0002300Z coverage report --fail-under=80
+2026-10-17T00:43:48.2003400Z Coverage check passed (99% >= 80%).
+2026-10-17T00:43:48.2504500Z ##[endgroup]
+2026-10-17T00:43:48.3005600Z ##[group]6. Upload HTML Coverage Report Artifact
+2026-10-17T00:43:48.3005700Z Uploading runner artifact: YummyApp-Coverage-Report
+2026-10-17T00:43:49.1006800Z Artifact uploaded successfully.
+2026-10-17T00:43:49.2007900Z ##[endgroup]
+2026-10-17T00:43:49.3009000Z Post job cleanup
+2026-10-17T00:43:49.5001200Z Complete job
